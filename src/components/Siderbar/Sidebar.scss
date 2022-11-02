@@ -1,0 +1,42 @@
+.sidebar {
+    width: auto;
+    margin-left: 120px;
+    margin-right: 20px;
+    margin-top: 5px;
+    border: 2px solid #e0e0e0;
+    background: white;
+
+    h2 {
+        padding-left: 15px;
+        font-weight: 600;
+        font-size: 20px;
+        margin: 15px 0;
+    }
+
+    .card-side {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #e0e0e0;
+        justify-items: center;
+
+        .side-left {
+            display: flex;
+            .link-sidebar {
+                text-decoration: none;
+                padding-left: 20px;
+                margin: 12px 0;
+                font-size: 16px;
+                color: black;
+            }
+
+            .link-sidebar:hover {
+                color: blue;
+            }
+        }
+
+        .side-right {
+            padding-top: 8px;
+            padding-right: 10px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.header {
+    width: 99%;
+    height: 155px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .baner {
+        position: absolute;
+        width: 1020px;
+        height: 100%;
+        background-image: url(../../assets/header.jpg);
+        background-repeat: no-repeat;
+    }
+    
+    background-color: #42a5f5;
+    border: 5px solid #1976d2;
+}
