@@ -17,7 +17,7 @@ const Sidebar = () => {
             </div>
             <div className="card-side">
                 <div className="side-left">
-                    <Link to='/' className='link-sidebar'>Danh sách đề tài</Link>
+                    <Link to='/danhsachdetai' className='link-sidebar'>Danh sách đề tài</Link>
                 </div>
                 <div className="side-right">
                     <NavigateNextIcon />
@@ -49,7 +49,7 @@ const Sidebar = () => {
             </div>
             <div className="card-side">
                 <div className="side-left">
-                    <Link to='/' className='link-sidebar'>Tìm kím</Link>
+                    <Link to='/' className='link-sidebar'>Tìm kiếm</Link>
                 </div>
                 <div className="side-right">
                     <NavigateNextIcon />

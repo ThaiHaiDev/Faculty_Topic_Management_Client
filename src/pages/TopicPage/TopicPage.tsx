@@ -1,20 +1,20 @@
-import ContentHome from '../../components/ContentHome/ContentHome';
+import ContentTopic from '../../components/ContentTopic/ContentTopic';
 import Sidebar from '../../components/Siderbar/Sidebar';
-import './HomePage.scss';
+import './TopicPage.scss';
 
-const HomePage = () => {
+const TopicPage = () => {
     return (
-        <div className="home-page">
+        <div className="topic-page">
             <div className="row">
                 <div className="rol c-4 left">
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <ContentHome />
+                    <ContentTopic />
                 </div>
             </div>
         </div>
     );
 };
 
-export default HomePage;
+export default TopicPage;
