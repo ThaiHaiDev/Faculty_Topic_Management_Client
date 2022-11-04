@@ -3,7 +3,14 @@ import Sidebar from '../../components/Siderbar/Sidebar';
 import './SigninPage.scss';
 
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import { useSnackbar } from 'notistack';
+
 import { useForm, SubmitHandler } from 'react-hook-form';
+import authApi from '../../services/authApi';
+import { AxiosError } from 'axios';
+import { useDispatch } from 'react-redux';
+import userSlice from './userSlice';
+import { SigninRequest } from '../../share/models/auth';
 
 const SigninPage = () => {
     const {
@@ -11,22 +18,24 @@ const SigninPage = () => {
         reset,
         handleSubmit,
         formState: { errors },
-    } = useForm<any>();
+    } = useForm<SigninRequest>();
 
-    const onSubmit: SubmitHandler<any> = (data: any) => {
-        console.log(data);
-        // authApi
-        //     .signIn(data)
-        //     .then((userData) => {
-        //         dispatch(userSlice.actions.signin(userData.data));
-        //         console.log(userData)
-        //         enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
-        //         reset();
-        //         document.location = '/';
-        //     })
-        //     .catch((error: AxiosError<LoginErrorResponse>) => {
-        //         enqueueSnackbar(error.response?.data.message, { variant: 'error' });
-        //     });
+    const { enqueueSnackbar } = useSnackbar();
+
+    const dispatch = useDispatch();
+
+    const onSubmit: SubmitHandler<SigninRequest> = async (data: SigninRequest) => {
+        authApi
+            .signIn(data)
+            .then((userData: any) => {
+                dispatch(userSlice.actions.signin(userData.data))
+                enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
+                reset();
+                document.location = '/';
+            })
+            .catch((error: AxiosError<any>) => {
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
+            });
     };
 
     return (

@@ -1,7 +1,7 @@
-.detailtopic {
+.gv {
     margin-top: 5px;
     width: 99%;
-    height: 800px;
+    height: 570px;
     background: white;
     border: 2px solid #e0e0e0;
     margin-bottom: 30px;
@@ -15,19 +15,6 @@
             margin: 0;
             padding: 15px 0;
         }
-    }
-
-    .btn-delete {
-        margin: 0;
-        color: red;
-        text-decoration: underline;
-        position: absolute;
-        right: 0;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-right: 110px;
-        cursor: pointer;
-
     }
 
     .total-topic {
@@ -44,14 +31,14 @@
     .rtable {
         display: inline-block;
         vertical-align: top;
-        width: auto;
+        width: 100%;
         overflow-x: auto;
         // optional - looks better for small cell values
         white-space: nowrap;
         border-collapse: collapse;
         border-spacing: 0;
-        margin: 8px;
-        margin-top: 45px;
+        margin: 4px;
+        margin-left: 30px;
     }
 
     .rtable,
@@ -75,7 +62,7 @@
 
     .rtable th,
     .rtable td {
-        padding: 12px 10px 12px 12px;
+        padding: 12px 130px 12px 12px;
         border: 1px solid #d9d7ce;
     }
 
@@ -112,8 +99,7 @@
     }
 
     tr:hover {
-        background: #eeeeee;
-        opacity: 0.6;
+        background: #ffe0b2;
     }
 
     .rtable--flip td {
@@ -132,4 +118,8 @@
         cursor: pointer;
     }
 
+
+    .pagination {
+        margin-top: 20px;
+    }
 }

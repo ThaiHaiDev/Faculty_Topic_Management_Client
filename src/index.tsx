@@ -7,11 +7,19 @@ import './assets/css/grid.scss';
 import './assets/css/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 
+import { SnackbarProvider } from 'notistack';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <Provider store={store}>
+                <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} style={{fontSize: '14px'}}>
+                    <App />
+                </SnackbarProvider>
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>,
 );
