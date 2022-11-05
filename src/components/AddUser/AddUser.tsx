@@ -4,6 +4,9 @@ import { useSnackbar } from 'notistack';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ChangeEvent, useState } from 'react';
+import userApi from '../../services/userApi';
+import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 const AddUser = () => {
     const {
@@ -17,26 +20,27 @@ const AddUser = () => {
 
     const { enqueueSnackbar } = useSnackbar();
 
+    const navigate = useNavigate();
+
     const changeRoleHandler = (event: ChangeEvent<HTMLSelectElement>) => {
         setRoleData(event.currentTarget?.value);
     };
 
     const onSubmit: SubmitHandler<any> = async (data: any) => {
-        console.log({
+        const newUser = {
             ...data,
             role: roleData,
-        });
-        // authApi
-        //     .signIn(data)
-        //     .then((userData: any) => {
-        //         dispatch(userSlice.actions.signin(userData.data))
-        //         enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
-        //         reset();
-        //         document.location = '/';
-        //     })
-        //     .catch((error: AxiosError<any>) => {
-        //         enqueueSnackbar(error.response?.data.message, { variant: 'error' });
-        //     });
+        };
+        userApi
+            .addUser(newUser)
+            .then((dataNew: any) => {
+                enqueueSnackbar('Tạo tài khoản thành công', { variant: 'success' });
+                reset();
+                navigate('/thongtinsinhvien');
+            })
+            .catch((error: AxiosError<any>) => {
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
+            });
     };
 
     return (
@@ -97,16 +101,6 @@ const AddUser = () => {
                     <input
                         className="signin__form-input"
                         type="text"
-                        placeholder="Mã số sinh viên"
-                        {...register('mssv', {
-                            required: 'Mã số sinh viên được yêu cầu',
-                        })}
-                    />
-                    {errors.mssv && <span className="message_error">{`${errors.mssv && errors.mssv?.message}`}</span>}
-
-                    <input
-                        className="signin__form-input"
-                        type="text"
                         placeholder="Số điện thoại"
                         {...register('phone', {
                             required: 'Số điện thoại được yêu cầu',
@@ -137,7 +131,7 @@ const AddUser = () => {
                         <option value="student">Sinh viên</option>
                     </select>
 
-                    <button type="submit">Đăng nhập</button>
+                    <button type="submit">Thêm mới</button>
                 </form>
             </div>
         </div>

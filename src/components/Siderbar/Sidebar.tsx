@@ -3,22 +3,30 @@ import './Sidebar.scss';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Link } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useEffect, useState } from 'react';
+import userSlice from '../../pages/SigninPage/userSlice';
 
 const Sidebar = () => {
     const [roleSignin, setRoleSignin] = useState<string>('');
     const user = useSelector((state: RootState) => state.user);
+
+    const dispatch = useDispatch();
     useEffect(() => {
         if (user.current.role === 'student') {
             setRoleSignin('sinh viên');
         } else if (user.current.role === 'dean') {
             setRoleSignin('trưởng khoa');
-        } else if (user.current.role === 'lecturers'){
+        } else if (user.current.role === 'lecturers') {
             setRoleSignin('giảng viên');
         }
     }, [user]);
+
+    const handleSignout = () => {
+        dispatch(userSlice.actions.logout());
+    };
+    
     return (
         <div className="sidebar">
             <h2>{`Danh mục ${roleSignin}`}</h2>
@@ -86,7 +94,7 @@ const Sidebar = () => {
                     </div>
                     <div className="card-side">
                         <div className="side-left">
-                            <Link to="/" className="link-sidebar">
+                            <Link to="/" className="link-sidebar" onClick={handleSignout}>
                                 Đăng xuất
                             </Link>
                         </div>
@@ -121,7 +129,7 @@ const Sidebar = () => {
                     </div>
                     <div className="card-side">
                         <div className="side-left">
-                            <Link to="/" className="link-sidebar">
+                            <Link to="/quanlynhom" className="link-sidebar">
                                 Quản lý nhóm
                             </Link>
                         </div>
@@ -141,7 +149,7 @@ const Sidebar = () => {
                     </div>
                     <div className="card-side">
                         <div className="side-left">
-                            <Link to="/" className="link-sidebar">
+                            <Link to="/dangkidetai" className="link-sidebar">
                                 Đăng ký đề tài
                             </Link>
                         </div>
@@ -151,7 +159,7 @@ const Sidebar = () => {
                     </div>
                     <div className="card-side">
                         <div className="side-left">
-                            <Link to="/" className="link-sidebar">
+                            <Link to="/trangthaidetai" className="link-sidebar">
                                 Trạng thái đề tài
                             </Link>
                         </div>
@@ -161,7 +169,7 @@ const Sidebar = () => {
                     </div>
                     <div className="card-side">
                         <div className="side-left">
-                            <Link to="/" className="link-sidebar">
+                            <Link to="/" className="link-sidebar" onClick={handleSignout}>
                                 Đăng xuất
                             </Link>
                         </div>
