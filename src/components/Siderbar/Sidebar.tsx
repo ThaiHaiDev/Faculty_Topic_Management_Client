@@ -1,7 +1,7 @@
 import './Sidebar.scss';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -14,6 +14,8 @@ const Sidebar = () => {
     const [roleSignin, setRoleSignin] = useState<string>('');
     const user = useSelector((state: RootState) => state.user);
 
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     useEffect(() => {
         if (user.current.role === 'student') {
@@ -25,8 +27,9 @@ const Sidebar = () => {
         }
     }, [user]);
 
-    const handleSignout = () => {
-        dispatch(userSlice.actions.logout());
+    const handleSignout = async () => {
+        await dispatch(userSlice.actions.logout());
+        navigate('/signin')
     };
 
     return (
