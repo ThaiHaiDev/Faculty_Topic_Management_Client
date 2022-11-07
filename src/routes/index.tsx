@@ -13,6 +13,7 @@ import AddTopicPage from '../pages/AddTopicPage/AddTopicPage';
 import ManageTeamPage from '../pages/ManageTeamPage/ManageTeamPage';
 import StatusTopicPage from '../pages/StatusTopicPage/StatusTopicPage';
 import ApprovalPage from '../pages/ApprovalPage/ApprovalPage';
+import InfoTeamPage from '../pages/InfoTeamPage/InfoTeamPage';
 
 const Auth = () => {
     const user = useSelector((state: RootState) => state.user);
@@ -25,6 +26,8 @@ const Auth = () => {
             <Route path="/themdulieu" element={<AddDataPage />} />
             <Route path="/pheduyet" element={<ApprovalPage />} />
             <Route path="/chitiet/:id" element={<DetailTopicPage />} />
+
+            <Route path="/thongtinnhom" element={<InfoTeamPage />} />
 
             <Route path="/quanlynhom" element={<ManageTeamPage />} />
             <Route path="/dangkidetai" element={<AddTopicPage />} />

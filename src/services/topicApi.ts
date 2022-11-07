@@ -21,8 +21,12 @@ const topicApi = {
         const url = `/api/v1/topic/${idTopic}`;
         return axiosClient.delete(url);
     },
-    getAllTopicsNotApproval(): Promise<any> {
-        const url = "/api/v1/topic/notapproval";
+    getAllTopicsNotApproval(idGv: string | undefined): Promise<any> {
+        const url = `/api/v1/topic/notapproval/${idGv}`;
+        return axiosClient.get(url);
+    },
+    getAllTopicsOfGvhd(idGv: string | undefined): Promise<any> {
+        const url = `/api/v1/topic/alltopicofgvhd/${idGv}`;
         return axiosClient.get(url);
     },
     getAllTopicsApproval1st(): Promise<any> {

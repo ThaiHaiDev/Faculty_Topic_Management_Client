@@ -1,0 +1,125 @@
+.sv {
+    margin-top: 5px;
+    width: 99%;
+    height: 570px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+
+    .header-topic {
+        padding-left: 20px;
+        font-size: 18px;
+        background: #81d4fa;
+
+        p {
+            margin: 0;
+            padding: 15px 0;
+        }
+    }
+
+    .total-topic {
+        text-align: center;
+        background: #f44336;
+        padding: 3px 0;
+        margin: 16px 350px;
+        font-weight: bold;
+        color: white;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .rtable {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        overflow-x: auto;
+        // optional - looks better for small cell values
+        white-space: nowrap;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 4px;
+        margin-left: 30px;
+    }
+
+    .rtable,
+    .rtable--flip tbody {
+        // optional - enable iOS momentum scrolling
+        -webkit-overflow-scrolling: touch;
+        // scrolling shadows
+        background: radial-gradient(left, ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center,
+            radial-gradient(right, ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+        background-size: 10px 100%, 10px 100%;
+        background-attachment: scroll, scroll;
+        background-repeat: no-repeat;
+    }
+
+    .rtable th {
+        font-size: 15px;
+        text-align: left;
+        // text-transform: uppercase;
+        background: #f2f0e6;
+    }
+
+    .rtable th,
+    .rtable td {
+        padding: 12px 40px 12px 12px;
+        border: 1px solid #d9d7ce;
+    }
+
+    .rtable--flip {
+        display: flex;
+        overflow: hidden;
+        background: none;
+    }
+
+    .rtable--flip thead {
+        display: flex;
+        flex-shrink: 0;
+        min-width: min-content;
+    }
+
+    .rtable--flip tbody {
+        display: flex;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        cursor: pointer;
+    }
+
+    .rtable--flip tr {
+        display: flex;
+        flex-direction: column;
+        min-width: min-content;
+        flex-shrink: 0;
+    }
+
+    .rtable--flip td,
+    .rtable--flip th {
+        display: block;
+    }
+
+    tr:hover {
+        background: #ffe0b2;
+    }
+
+    .rtable--flip td {
+        background-image: none !important;
+        // border-collapse is no longer active
+        border-left: 0;
+    }
+
+    // border-collapse is no longer active
+    .rtable--flip th:not(:last-child),
+    .rtable--flip td:not(:last-child) {
+        border-bottom: 0;
+    }
+
+    .icon-detail {
+        cursor: pointer;
+    }
+
+
+    .pagination {
+        margin-top: 20px;
+    }
+}

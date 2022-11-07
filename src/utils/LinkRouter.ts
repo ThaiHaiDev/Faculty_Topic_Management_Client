@@ -62,11 +62,11 @@ export const LecturersLink = [
         nameLink: 'Trang chủ',
     },
     {
-        urlLink: '/',
+        urlLink: '/pheduyet',
         nameLink: 'Danh sách đề tài',
     },
     {
-        urlLink: '/',
+        urlLink: '/thongtinnhom',
         nameLink: 'Thông tin nhóm đăng ký',
     },
 ];

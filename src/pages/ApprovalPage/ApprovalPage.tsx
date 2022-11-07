@@ -3,7 +3,12 @@ import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Sidebar from '../../components/Siderbar/Sidebar';
 import './ApprovalPage.scss';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import ApprovalGv from '../../components/ApprovalGv/ApprovalGv';
+
 const ApprovalPage = () => {
+    const userSignin = useSelector((state: RootState) => state.user);
     return (
         <div className="approval-page">
             <div className="row">
@@ -13,7 +18,8 @@ const ApprovalPage = () => {
                 <div className="rol c-8 right">
                     <Breadcrumb name="Danh sách đề tài cần phê duyệt" url="/pheduyet" />
                     <div className="approval-card">
-                        <ApprovalAdmin />
+                        {userSignin.current.role === 'dean' ? <ApprovalAdmin /> : <ApprovalGv />}
+                        
                     </div>
                 </div>
             </div>
