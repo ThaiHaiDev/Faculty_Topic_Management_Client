@@ -15,7 +15,7 @@ import { AxiosError } from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 
-const colorTeam = ['#e1bee7', '#f8bbd0', 'green'];
+const colorTeam = ['#e1bee7', '#f8bbd0', '#90caf9', '#80cbc4', '#e6ee9c', '#ffcc80', '#e1bee7', '#f8bbd0'];
 
 const InfoTeam = () => {
     const [dataTeam, setDataTeam] = useState<any>([]);
@@ -33,7 +33,7 @@ const InfoTeam = () => {
                 setDataTeam(userData);
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     }, [userSignin, enqueueSnackbar]);
 

@@ -4,8 +4,6 @@ import HomePage from '../pages/HomePage/HomePage';
 import SigninPage from '../pages/SigninPage/SigninPage';
 import TopicPage from '../pages/TopicPage/TopicPage';
 
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 import ListGvPage from '../pages/ListGvPage/ListGvPage';
 import ListSvPage from '../pages/ListSvPage/ListSvPage';
 import AddDataPage from '../pages/AddDataPage/AddDataPage';
@@ -16,7 +14,6 @@ import ApprovalPage from '../pages/ApprovalPage/ApprovalPage';
 import InfoTeamPage from '../pages/InfoTeamPage/InfoTeamPage';
 
 const Auth = () => {
-    const user = useSelector((state: RootState) => state.user);
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />

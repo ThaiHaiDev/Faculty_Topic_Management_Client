@@ -39,7 +39,7 @@ const ListSv = () => {
                 navigate('/');
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar('Xóa tài khoản thất bại', { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };
 

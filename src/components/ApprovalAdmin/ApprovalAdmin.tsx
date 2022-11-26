@@ -1,11 +1,6 @@
 import './ApprovalAdmin.scss';
 
 import { useEffect, useState } from 'react';
-import userApi from '../../services/userApi';
-
-import DeleteIcon from '@mui/icons-material/Delete';
-
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 import { useSnackbar } from 'notistack';
@@ -31,7 +26,7 @@ const ApprovalAdmin = () => {
                 setDataTopic(userData);
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     }, [userSignin, enqueueSnackbar]);
 
@@ -47,7 +42,7 @@ const ApprovalAdmin = () => {
                 navigate('/');
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };
 

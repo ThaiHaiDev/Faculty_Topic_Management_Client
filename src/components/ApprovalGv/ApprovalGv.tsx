@@ -27,7 +27,7 @@ const ApprovalGv = () => {
                 setDataTopic(userData);
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
         topicApi
             .getAllTopicsOfGvhd(userSignin.current._id)
@@ -35,7 +35,7 @@ const ApprovalGv = () => {
                 setDataTopicOfGvhd(userData);
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     }, [userSignin, enqueueSnackbar]);
 
@@ -51,7 +51,7 @@ const ApprovalGv = () => {
                 navigate('/');
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };
 

@@ -31,7 +31,7 @@ const ListTvTeam = () => {
                 setDataMember(userData);
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     }, [userSignin, enqueueSnackbar]);
 

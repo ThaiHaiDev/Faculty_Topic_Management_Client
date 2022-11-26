@@ -5,7 +5,6 @@ import { useSnackbar } from 'notistack';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ChangeEvent, useEffect, useState } from 'react';
 import userApi from '../../services/userApi';
-import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import typeTopicApi from '../../services/typeTopicApi';
 import specializedApi from '../../services/specializedApi';
@@ -36,8 +35,6 @@ const AddTopic = () => {
     const [typeTopicData, setTypeTopicData] = useState<string>('');
 
     const { enqueueSnackbar } = useSnackbar();
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         userApi.getAllUserWithLecturer().then((data) => {
@@ -83,7 +80,7 @@ const AddTopic = () => {
                 reset();
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar(error.response?.data, { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };
 
