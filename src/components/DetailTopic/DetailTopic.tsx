@@ -9,6 +9,7 @@ import 'reactjs-popup/dist/index.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useSnackbar } from 'notistack';
 import { AxiosError } from 'axios';
+import formatName from '../../utils/formatName';
 
 const DetailTopic = () => {
     const params = useParams();
@@ -89,7 +90,7 @@ const DetailTopic = () => {
                     </tr>
                     <tr style={{ background: '#b2dfdb' }}>
                         <td>Trưởng nhóm</td>
-                        <td>{`${dataDetail?.leader?.lastName} ${dataDetail?.leader?.firstName}`}</td>
+                        <td>{`${formatName(dataDetail?.leader?.lastName)} ${formatName(dataDetail?.leader?.firstName)}`}</td>
                     </tr>
                     <tr>
                         <td>Số lượng thành viên</td>
@@ -97,15 +98,15 @@ const DetailTopic = () => {
                     </tr>
                     <tr>
                         <td>Các thành viên</td>
-                        <td>{`${dataDetail?.team[0]?.lastName} ${dataDetail?.team[0]?.firstName} - ${dataDetail?.team[1]?.lastName} ${dataDetail?.team[1]?.firstName}`}</td>
+                        <td>{`${formatName(dataDetail?.team[0]?.lastName)} ${formatName(dataDetail?.team[0]?.firstName)} - ${formatName(dataDetail?.team[1]?.lastName)} ${formatName(dataDetail?.team[1]?.firstName)}`}</td>
                     </tr>
                     <tr style={{ background: '#e6ee9c' }}>
                         <td>Giáo viên hướng dẫn</td>
-                        <td>{`${dataDetail?.gvhd?.lastName} ${dataDetail?.gvhd?.firstName}`}</td>
+                        <td>{`${formatName(dataDetail?.gvhd?.lastName)} ${formatName(dataDetail?.gvhd?.firstName)}`}</td>
                     </tr>
                     <tr>
                         <td>Giáo viên phản biện</td>
-                        <td>{`${dataDetail?.gvpb?.lastName} ${dataDetail?.gvpb?.firstName}`}</td>
+                        <td>{`${formatName(dataDetail?.gvpb?.lastName)} ${formatName(dataDetail?.gvpb?.firstName)}`}</td>
                     </tr>
                     <tr>
                         <td>Điểm số</td>

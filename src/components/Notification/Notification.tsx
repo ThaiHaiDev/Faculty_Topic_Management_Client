@@ -23,11 +23,13 @@ const Notification = () => {
             <div className="header-noti">
                 <p>Thông báo</p>
             </div>
-            {dataNoti?.map((data:any) => (
+            {dataNoti?.map((data: any) => (
                 <div className="item-noti" key={data._id}>
                     <div className="card-noti">
-                        <p className="time-noti">{moment(data.updatedAt).format("DD/MM/YYYY HH:MM")}</p>
-                        <p className="name-noti">{data.header}</p>
+                        <p className="time-noti">{moment(data.updatedAt).format('DD/MM/YYYY HH:MM')}</p>
+                        <p className="name-noti">
+                            {data?.header && data?.header.slice(0, 70) + (data?.header.length > 70 ? '...' : '')}
+                        </p>
                     </div>
                 </div>
             ))}
