@@ -45,7 +45,7 @@ const InfoTeam = () => {
                 navigate('/');
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar('Xóa thành viên thất bại', { variant: 'error' });
+                enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };
 

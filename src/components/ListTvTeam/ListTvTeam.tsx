@@ -3,13 +3,9 @@ import './ListTvTeam.scss';
 import { useEffect, useState } from 'react';
 import userApi from '../../services/userApi';
 
-import DeleteIcon from '@mui/icons-material/Delete';
-
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 import { useSnackbar } from 'notistack';
-import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
 import { useSelector } from 'react-redux';
@@ -19,8 +15,6 @@ const ListTvTeam = () => {
     const [dataMember, setDataMember] = useState<any>([]);
 
     const userSignin = useSelector((state: RootState) => state.user);
-
-    const navigate = useNavigate();
 
     const { enqueueSnackbar } = useSnackbar();
 
@@ -34,18 +28,6 @@ const ListTvTeam = () => {
                 enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     }, [userSignin, enqueueSnackbar]);
-
-    const handleDelete = (idUser: string) => {
-        userApi
-            .deleteAUser(idUser)
-            .then(() => {
-                enqueueSnackbar('Xóa thành viên thành công', { variant: 'success' });
-                navigate('/');
-            })
-            .catch((error: AxiosError<any>) => {
-                enqueueSnackbar('Xóa thành viên thất bại', { variant: 'error' });
-            });
-    };
 
     return (
         <div className="sv">
@@ -73,36 +55,6 @@ const ListTvTeam = () => {
                             <td>{sv.phone}</td>
                             <td>{sv.email}</td>
                             <td>{sv.isTeam ? 'Đã đăng ký' : 'Chưa đăng ký'}</td>
-                            <td style={{ padding: '0 10px' }}>
-                                <Popup
-                                    trigger={
-                                        <DeleteIcon className="icon-delete" sx={{ color: 'red', cursor: 'pointer' }} />
-                                    }
-                                    position="bottom center"
-                                >
-                                    <div>
-                                        <p style={{ margin: '0', padding: '5px' }}>
-                                            Bạn chắc chắn muốn xóa tài khoản này không?
-                                        </p>
-                                        <p
-                                            style={{
-                                                background: '#ef5350',
-                                                margin: '0',
-                                                width: 'auto',
-                                                paddingLeft: '15px',
-                                                paddingTop: '5px',
-                                                paddingBottom: '5px',
-                                                marginLeft: '75%',
-                                                cursor: 'pointer',
-                                                color: 'white',
-                                            }}
-                                            onClick={() => handleDelete(sv._id)}
-                                        >
-                                            Yes
-                                        </p>
-                                    </div>
-                                </Popup>
-                            </td>
                         </tr>
                     ))}
                 </tbody>

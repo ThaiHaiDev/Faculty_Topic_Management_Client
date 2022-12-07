@@ -11,14 +11,16 @@ const ApprovalPage = () => {
     const userSignin = useSelector((state: RootState) => state.user);
     return (
         <div className="approval-page">
-            <div className="row" style={{ paddingRight: '100px'}}>
+            <div className="row">
                 <div className="rol c-4 left">
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <Breadcrumb name="Danh sách đề tài cần phê duyệt" url="/pheduyet" />
-                    <div className="approval-card">
-                        {userSignin.current.role === 'dean' ? <ApprovalAdmin /> : <ApprovalGv />}
+                    <div style={{ marginRight: '100px' }}>
+                        <Breadcrumb name="Danh sách đề tài cần phê duyệt" url="/pheduyet" />
+                        <div className="approval-card">
+                            {userSignin.current.role === 'dean' ? <ApprovalAdmin /> : <ApprovalGv />}
+                        </div>
                     </div>
                 </div>
             </div>

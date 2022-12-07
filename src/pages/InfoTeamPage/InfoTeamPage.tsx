@@ -11,9 +11,11 @@ const InfoTeamPage = () => {
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <Breadcrumb name="Thông tin các nhóm đăng ký" url="/thongtinnhom" />
-                    <div className="info-team-card">
-                        <InfoTeam />
+                    <div style={{ marginRight: '100px' }}>
+                        <Breadcrumb name="Thông tin các nhóm đăng ký" url="/thongtinnhom" />
+                        <div className="info-team-card">
+                            <InfoTeam />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -45,7 +45,10 @@ const topicApi = {
         const url = `/api/v1/topic/${idTopic}/2nd`;
         return axiosClient.patch(url);
     },
-
+    updateTopic(dataTopic : any, idTopic : string | undefined): Promise<any> {
+        const url = `/api/v1/topic/${idTopic}`;
+        return axiosClient.put(url, dataTopic);
+    },
 };
 
 export default topicApi;

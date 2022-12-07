@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useSnackbar } from 'notistack';
 import { AxiosError } from 'axios';
 import formatName from '../../utils/formatName';
+import DialogUpdateTopic from '../DialogUpdateTopic/DialogUpdateTopic';
 
 const DetailTopic = () => {
     const params = useParams();
@@ -33,7 +34,7 @@ const DetailTopic = () => {
                 navigate('/danhsachdetai');
             })
             .catch((error: AxiosError<any>) => {
-                enqueueSnackbar('Xóa đề tài thất bại', { variant: 'error' });
+                enqueueSnackbar(error.response?.data, { variant: 'error' });
             });
     };
 
@@ -43,16 +44,19 @@ const DetailTopic = () => {
                 <p>Chi tiết đề tài</p>
             </div>
 
-            <Popup trigger={<p className="btn-delete">Delete</p>} position="bottom center">
-                <div>
-                    <p style={{ margin: '0', padding: '5px' }}>Bạn chắc chắn muốn xóa đề tài này?</p>
-                    <DeleteIcon
-                        className="icon-delete"
-                        onClick={handleDelete}
-                        sx={{ color: 'red', marginLeft: '85%', cursor: 'pointer' }}
-                    />
-                </div>
-            </Popup>
+            <div className="btn-topic">
+                <DialogUpdateTopic data={dataDetail} />
+                <Popup trigger={<p className="btn-delete">Delete</p>} position="bottom center">
+                    <div>
+                        <p style={{ margin: '0', padding: '5px' }}>Bạn chắc chắn muốn xóa đề tài này?</p>
+                        <DeleteIcon
+                            className="icon-delete"
+                            onClick={handleDelete}
+                            sx={{ color: 'red', marginLeft: '85%', cursor: 'pointer' }}
+                        />
+                    </div>
+                </Popup>
+            </div>
 
             <table className="rtable" style={{ width: '100%' }}>
                 <tbody style={{ width: '100%' }}>
@@ -90,7 +94,9 @@ const DetailTopic = () => {
                     </tr>
                     <tr style={{ background: '#b2dfdb' }}>
                         <td>Trưởng nhóm</td>
-                        <td>{`${formatName(dataDetail?.leader?.lastName)} ${formatName(dataDetail?.leader?.firstName)}`}</td>
+                        <td>{`${formatName(dataDetail?.leader?.lastName)} ${formatName(
+                            dataDetail?.leader?.firstName,
+                        )}`}</td>
                     </tr>
                     <tr>
                         <td>Số lượng thành viên</td>
@@ -98,15 +104,23 @@ const DetailTopic = () => {
                     </tr>
                     <tr>
                         <td>Các thành viên</td>
-                        <td>{`${formatName(dataDetail?.team[0]?.lastName)} ${formatName(dataDetail?.team[0]?.firstName)} - ${formatName(dataDetail?.team[1]?.lastName)} ${formatName(dataDetail?.team[1]?.firstName)}`}</td>
+                        <td>{`${formatName(dataDetail?.team[0]?.lastName)} ${formatName(
+                            dataDetail?.team[0]?.firstName,
+                        )} - ${formatName(dataDetail?.team[1]?.lastName)} ${formatName(
+                            dataDetail?.team[1]?.firstName,
+                        )}`}</td>
                     </tr>
                     <tr style={{ background: '#e6ee9c' }}>
                         <td>Giáo viên hướng dẫn</td>
-                        <td>{`${formatName(dataDetail?.gvhd?.lastName)} ${formatName(dataDetail?.gvhd?.firstName)}`}</td>
+                        <td>{`${formatName(dataDetail?.gvhd?.lastName)} ${formatName(
+                            dataDetail?.gvhd?.firstName,
+                        )}`}</td>
                     </tr>
                     <tr>
                         <td>Giáo viên phản biện</td>
-                        <td>{`${formatName(dataDetail?.gvpb?.lastName)} ${formatName(dataDetail?.gvpb?.firstName)}`}</td>
+                        <td>{`${formatName(dataDetail?.gvpb?.lastName)} ${formatName(
+                            dataDetail?.gvpb?.firstName,
+                        )}`}</td>
                     </tr>
                     <tr>
                         <td>Điểm số</td>
