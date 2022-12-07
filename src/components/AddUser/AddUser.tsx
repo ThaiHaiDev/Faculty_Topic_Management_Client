@@ -48,90 +48,114 @@ const AddUser = () => {
             <br />
             <div className="form">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input
-                        className="signin__form-input"
-                        type="email"
-                        placeholder="Email"
-                        {...register('email', {
-                            required: 'Email được yêu cầu',
-                            pattern: {
-                                value: /^\S+@\S+$/i,
-                                message: 'Đây không phải là một email hợp lệ',
-                            },
-                        })}
-                    />
-                    {errors.email && (
-                        <span className="message_error">{`${errors.email && errors.email?.message}`}</span>
-                    )}
+                    <div className="row">
+                        <div className="col l-6">
+                            <p className="label-form">Email</p>
+                            <input
+                                className="adduser__form-input"
+                                type="email"
+                                placeholder="Vd: abc@gmail.com"
+                                {...register('email', {
+                                    required: 'Email được yêu cầu',
+                                    pattern: {
+                                        value: /^\S+@\S+$/i,
+                                        message: 'Đây không phải là một email hợp lệ',
+                                    },
+                                })}
+                            />
+                            {errors.email && (
+                                <span className="message_error">{`${errors.email && errors.email?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form">Họ tên lót</p>
+                            <input
+                                className="adduser__form-input"
+                                type="text"
+                                placeholder="Vd: Nguyen Van"
+                                {...register('lastName', {
+                                    required: 'Họ tên lót được yêu cầu',
+                                })}
+                            />
+                            {errors.lastName && (
+                                <span className="message_error">{`${
+                                    errors.lastName && errors.lastName?.message
+                                }`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form">Tên chính</p>
+                            <input
+                                className="adduser__form-input"
+                                type="text"
+                                placeholder="Vd: Abc"
+                                {...register('firstName', {
+                                    required: 'Tên chính được yêu cầu',
+                                })}
+                            />
+                            {errors.firstName && (
+                                <span className="message_error">{`${
+                                    errors.firstName && errors.firstName?.message
+                                }`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form">Mã số sinh viên</p>
+                            <input
+                                className="adduser__form-input"
+                                type="text"
+                                placeholder="Vd: 19100000"
+                                {...register('mssv', {
+                                    required: 'Mã số sinh viên được yêu cầu',
+                                })}
+                            />
+                            {errors.mssv && (
+                                <span className="message_error">{`${errors.mssv && errors.mssv?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form">Số điện thoại</p>
+                            <input
+                                className="adduser__form-input"
+                                type="text"
+                                placeholder="Vd: 0987654321"
+                                {...register('phone', {
+                                    required: 'Số điện thoại được yêu cầu',
+                                })}
+                            />
+                            {errors.phone && (
+                                <span className="message_error">{`${errors.phone && errors.phone?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form">Mật khẩu</p>
+                            <input
+                                className="adduser__form-input"
+                                type="password"
+                                placeholder="Vd: 123"
+                                {...register('password', {
+                                    required: 'Mật khẩu được yêu cầu',
+                                    maxLength: {
+                                        value: 16,
+                                        message: 'Mật khẩu chỉ giới hạn 16 kí tự',
+                                    },
+                                })}
+                            />
+                            {errors.password && <span className="message_error">{`${errors.password?.message}`}</span>}
+                        </div>
+                        <div className="col l-6"></div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <p className="label-form__select">Chọn quyền</p>
+                        <select name="role" className="select" onChange={changeRoleHandler}>
+                            <option value="student">------</option>
+                            <option value="dean">Trưởng khoa</option>
+                            <option value="lecturers">Giảng viên</option>
+                            <option value="student">Sinh viên</option>
+                        </select>
+                    </div>
 
-                    <input
-                        className="signin__form-input"
-                        type="text"
-                        placeholder="Họ tên lót"
-                        {...register('lastName', {
-                            required: 'Họ tên lót được yêu cầu',
-                        })}
-                    />
-                    {errors.lastName && (
-                        <span className="message_error">{`${errors.lastName && errors.lastName?.message}`}</span>
-                    )}
-
-                    <input
-                        className="signin__form-input"
-                        type="text"
-                        placeholder="Tên chính"
-                        {...register('firstName', {
-                            required: 'Tên chính được yêu cầu',
-                        })}
-                    />
-                    {errors.firstName && (
-                        <span className="message_error">{`${errors.firstName && errors.firstName?.message}`}</span>
-                    )}
-
-                    <input
-                        className="signin__form-input"
-                        type="text"
-                        placeholder="Mã số sinh viên"
-                        {...register('mssv', {
-                            required: 'Tên chính được yêu cầu',
-                        })}
-                    />
-                    {errors.mssv && <span className="message_error">{`${errors.mssv && errors.mssv?.message}`}</span>}
-
-                    <input
-                        className="signin__form-input"
-                        type="text"
-                        placeholder="Số điện thoại"
-                        {...register('phone', {
-                            required: 'Số điện thoại được yêu cầu',
-                        })}
-                    />
-                    {errors.phone && (
-                        <span className="message_error">{`${errors.phone && errors.phone?.message}`}</span>
-                    )}
-
-                    <input
-                        className="signin__form-input"
-                        type="password"
-                        placeholder="Enter password"
-                        {...register('password', {
-                            required: 'Mật khẩu được yêu cầu',
-                            maxLength: {
-                                value: 16,
-                                message: 'Mật khẩu chỉ giới hạn 16 kí tự',
-                            },
-                        })}
-                    />
-                    {errors.password && <span className="message_error">{`${errors.password?.message}`}</span>}
-
-                    <select name="role" className="select" onChange={changeRoleHandler}>
-                        <option value="">------</option>
-                        <option value="dean">Trưởng khoa</option>
-                        <option value="lecturers">Giảng viên</option>
-                        <option value="student">Sinh viên</option>
-                    </select>
-
-                    <button type="submit">Thêm mới</button>
+                    <button type="submit" className='btn-adduser'>Thêm mới</button>
                 </form>
             </div>
         </div>

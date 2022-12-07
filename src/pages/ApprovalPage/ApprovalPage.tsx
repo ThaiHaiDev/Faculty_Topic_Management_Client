@@ -11,7 +11,7 @@ const ApprovalPage = () => {
     const userSignin = useSelector((state: RootState) => state.user);
     return (
         <div className="approval-page">
-            <div className="row">
+            <div className="row" style={{ paddingRight: '100px'}}>
                 <div className="rol c-4 left">
                     <Sidebar />
                 </div>

@@ -1,4 +1,4 @@
-import './AddNoti.scss';
+import './AddSpecialized.scss';
 
 import { useSnackbar } from 'notistack';
 
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import notificationApi from '../../services/notificationApi';
 
-const AddNoti = () => {
+const AddSpecialized = () => {
     const {
         register,
         reset,
@@ -23,7 +23,7 @@ const AddNoti = () => {
         notificationApi
             .addNoti(data)
             .then((dataNew: any) => {
-                enqueueSnackbar('Thêm thông báo thành công', { variant: 'success' });
+                enqueueSnackbar('Thêm chuyên ngành thành công', { variant: 'success' });
                 reset();
                 navigate('/');
             })
@@ -33,38 +33,36 @@ const AddNoti = () => {
     };
 
     return (
-        <div className="add-noti">
+        <div className="add-specialized">
             <br />
             <div className="form">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
                         <div className="col l-12">
-                            <p className="label-form">Tiêu đề thông báo</p>
+                            <p className="label-form">Tên chuyên ngành</p>
                             <input
                                 className="adduser__form-input"
                                 type="text"
-                                placeholder="Vd: Danh sách tham quan..."
-                                {...register('header', {
+                                placeholder="Vd: Công nghệ phần mềm"
+                                {...register('name', {
                                     required: 'Tiêu đề thông báo được yêu cầu',
                                 })}
                             />
-                            {errors.header && (
-                                <span className="message_error">{`${errors.header && errors.header?.message}`}</span>
+                            {errors.name && (
+                                <span className="message_error">{`${errors.name && errors.name?.message}`}</span>
                             )}
                         </div>
                         <div className="col l-12">
-                            <p className="label-form">Nội dung thông báo</p>
+                            <p className="label-form">Mô tả</p>
                             <textarea
                                 className="adduser__form-textarea"
-                                placeholder="Vd: Thời gian: 7.15g-12g ngày 28/09/2022. Tập trung..."
-                                {...register('infomation', {
+                                placeholder="Vd: Chuyên ngành được chia ở năm 3 ..."
+                                {...register('desc', {
                                     required: 'Nội dung thông báo được yêu cầu',
                                 })}
                             />
-                            {errors.infomation && (
-                                <span className="message_error">{`${
-                                    errors.infomation && errors.infomation?.message
-                                }`}</span>
+                            {errors.desc && (
+                                <span className="message_error">{`${errors.desc && errors.desc?.message}`}</span>
                             )}
                         </div>
                     </div>
@@ -78,4 +76,4 @@ const AddNoti = () => {
     );
 };
 
-export default AddNoti;
+export default AddSpecialized;

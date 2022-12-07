@@ -9,6 +9,8 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useState } from 'react';
 import AddUser from '../../components/AddUser/AddUser';
+import AddNoti from '../../components/AddNoti/AddNoti';
+import AddSpecialized from '../../components/AddSpecialized/AddSpecialized';
 
 const AddDataPage = () => {
     const [value, setValue] = useState('1');
@@ -19,7 +21,7 @@ const AddDataPage = () => {
 
     return (
         <div className="adduser-page">
-            <div className="row">
+            <div className="row" style={{ paddingRight: '100px'}}>
                 <div className="rol c-4 left">
                     <Sidebar />
                 </div>
@@ -32,12 +34,12 @@ const AddDataPage = () => {
                                     <TabList onChange={handleChange} aria-label="lab API tabs example">
                                         <Tab label="Tài khoản" value="1" />
                                         <Tab label="Thông báo" value="2" />
-                                        <Tab label="Item Three" value="3" />
+                                        <Tab label="Chuyên ngành" value="3" />
                                     </TabList>
                                 </Box>
-                                <TabPanel value="1">Tài khoản <AddUser /> </TabPanel>
-                                <TabPanel value="2">Thông báo</TabPanel>
-                                <TabPanel value="3">Item Three</TabPanel>
+                                <TabPanel value="1" sx={{ fontSize: '18px'}}>Tài khoản <AddUser /> </TabPanel>
+                                <TabPanel value="2" sx={{ fontSize: '18px'}}>Thông báo <AddNoti /> </TabPanel>
+                                <TabPanel value="3" sx={{ fontSize: '18px'}}>Chuyên ngành <AddSpecialized /> </TabPanel>
                             </TabContext>
                         </Box>
                     </div>
