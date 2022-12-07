@@ -60,7 +60,7 @@ const ApprovalGv = () => {
             <div className="header-topic">
                 <p>Danh sách các đề tài cần được phê duyệt</p>
             </div>
-            <p className="total-topic">Tổng số đề tài đang chờ phê duyệt: {dataTopic?.length}</p>
+            <p className="total-topic__gv">Tổng số đề tài đang chờ phê duyệt: {dataTopic?.length}</p>
             <table className="rtable">
                 <thead>
                     <tr>

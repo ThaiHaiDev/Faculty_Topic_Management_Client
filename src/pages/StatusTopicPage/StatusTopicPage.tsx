@@ -11,9 +11,11 @@ const StatusTopicPage = () => {
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <Breadcrumb name="Trạng thái đề tài" url="/trangthaidetai" />
-                    <div className="manage-team-card">
-                        <StatusTopic />
+                    <div style={{ marginRight: '100px' }}>
+                        <Breadcrumb name="Trạng thái đề tài" url="/trangthaidetai" />
+                        <div className="manage-team-card">
+                            <StatusTopic />
+                        </div>
                     </div>
                 </div>
             </div>

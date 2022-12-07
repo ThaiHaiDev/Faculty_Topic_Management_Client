@@ -85,113 +85,155 @@ const AddTopic = () => {
     };
 
     return (
-        <div className="add-user">
+        <div className="add-topic">
             <br />
             <div className="form">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input
-                        className="create-topic-input"
-                        type="text"
-                        placeholder="Tên đề tài"
-                        {...register('name', {
-                            required: 'Tên đề tài được yêu cầu',
-                        })}
-                    />
-                    {errors.name && <span className="message_error">{`${errors.name && errors.name?.message}`}</span>}
-
-                    <textarea
-                        className="create-topic-input"
-                        placeholder="Mô tả đề tài"
-                        {...register('desc', {
-                            required: 'Mô tả đề tài được yêu cầu',
-                        })}
-                    />
-                    {errors.desc && <span className="message_error">{`${errors.desc && errors.desc?.message}`}</span>}
-
-                    <input
-                        className="create-topic-input"
-                        type="text"
-                        placeholder="Mục tiêu"
-                        {...register('target', {
-                            required: 'Mục tiêu được yêu cầu',
-                        })}
-                    />
-                    {errors.target && (
-                        <span className="message_error">{`${errors.target && errors.target?.message}`}</span>
-                    )}
-
-                    <input
-                        className="create-topic-input"
-                        type="text"
-                        placeholder="Vd Web, app,..."
-                        {...register('product', {
-                            required: 'Sản phẩm được yêu cầu',
-                        })}
-                    />
-                    {errors.product && (
-                        <span className="message_error">{`${errors.product && errors.product?.message}`}</span>
-                    )}
-
-                    <input
-                        className="create-topic-input"
-                        type="text"
-                        placeholder="Công nghệ sử dụng"
-                        {...register('technology', {
-                            required: 'Công nghệ sử dụng được yêu cầu',
-                        })}
-                    />
-                    {errors.technology && (
-                        <span className="message_error">{`${errors.technology && errors.technology?.message}`}</span>
-                    )}
-
-                    <input
-                        className="create-topic-input"
-                        type="text"
-                        placeholder="Học kì"
-                        {...register('sesmeter', {
-                            required: 'Học kì được yêu cầu',
-                        })}
-                    />
-                    {errors.sesmeter && <span className="message_error">{`${errors.sesmeter?.message}`}</span>}
-
-                    <input
-                        className="create-topic-input"
-                        type="number"
-                        placeholder="Số lượng thành viên nhóm"
-                        {...register('slsv', {
-                            required: 'Số lượng thành viên nhóm được yêu cầu',
-                        })}
-                    />
-                    {errors.slsv && <span className="message_error">{`${errors.slsv && errors.slsv?.message}`}</span>}
-
-                    <select name="gv" className="select" onChange={changeGvHandler}>
-                        <option value="">------</option>
-                        {listDataGvhd?.map((gv: any) => (
-                            <option value={gv._id} key={gv._id}>{`${gv?.lastName} ${gv?.firstName}`}</option>
-                        ))}
-                    </select>
-
-                    <select name="spe" className="select" onChange={changeSpecializedHandler}>
-                        <option value="">------</option>
-                        {listDataSpecialized?.map((gv: any) => (
-                            <option value={gv._id} key={gv._id}>
-                                {gv.name}
-                            </option>
-                        ))}
-                    </select>
-
-                    <select name="typetopic" className="select" onChange={changeTypeTopicHandler}>
-                        <option value="">------</option>
-                        {listDataTypeTopic?.map((gv: any) => (
-                            <option value={gv._id} key={gv._id}>
-                                {gv.name}
-                            </option>
-                        ))}
-                    </select>
-
-                    <MultipleSelectPlaceholder listDataSv={listDataSv} setSvData={setSvData} />
-
-                    <button type="submit">Đăng kí đề tài</button>
+                    <div className="row">
+                        <div className="col l-12">
+                            <p className="label-form">Tên đề tài</p>
+                            <input
+                                className="create-topic-input"
+                                type="text"
+                                placeholder="Vd: Đề tài 1"
+                                {...register('name', {
+                                    required: 'Tên đề tài được yêu cầu',
+                                })}
+                            />
+                            {errors.name && (
+                                <span className="message_error">{`${errors.name && errors.name?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-12">
+                            <p className="label-form">Mô tả đề tài</p>
+                            <textarea
+                                className="create-topic-textarea"
+                                placeholder="Vd: abc ..."
+                                {...register('desc', {
+                                    required: 'Mô tả đề tài được yêu cầu',
+                                })}
+                            />
+                            {errors.desc && (
+                                <span className="message_error">{`${errors.desc && errors.desc?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Mục tiêu</p>
+                            <input
+                                className="create-topic-input__6"
+                                type="text"
+                                placeholder="Vd: Có thể sử dụng trong ..."
+                                {...register('target', {
+                                    required: 'Mục tiêu được yêu cầu',
+                                })}
+                            />
+                            {errors.target && (
+                                <span className="message_error__6">{`${errors.target && errors.target?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Sản phẩm thuộc</p>
+                            <input
+                                className="create-topic-input__6"
+                                type="text"
+                                placeholder="Vd Web, app,..."
+                                {...register('product', {
+                                    required: 'Sản phẩm được yêu cầu',
+                                })}
+                            />
+                            {errors.product && (
+                                <span className="message_error__6">{`${
+                                    errors.product && errors.product?.message
+                                }`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Công nghệ sử dụng</p>
+                            <input
+                                className="create-topic-input__6"
+                                type="text"
+                                placeholder="CVd: React, NodeJS, ..."
+                                {...register('technology', {
+                                    required: 'Công nghệ sử dụng được yêu cầu',
+                                })}
+                            />
+                            {errors.technology && (
+                                <span className="message_error__6">{`${
+                                    errors.technology && errors.technology?.message
+                                }`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Học kì</p>
+                            <input
+                                className="create-topic-input__6"
+                                type="text"
+                                placeholder="Vd: 1"
+                                {...register('sesmeter', {
+                                    required: 'Học kì được yêu cầu',
+                                })}
+                            />
+                            {errors.sesmeter && (
+                                <span className="message_error__6">{`${errors.sesmeter?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Số lượng thành viên của nhóm</p>
+                            <input
+                                className="create-topic-input__6"
+                                type="number"
+                                max={3}
+                                min={1}
+                                placeholder="Vd: 1"
+                                {...register('slsv', {
+                                    required: 'Số lượng thành viên nhóm được yêu cầu',
+                                })}
+                            />
+                            {errors.slsv && (
+                                <span className="message_error__6">{`${errors.slsv && errors.slsv?.message}`}</span>
+                            )}
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Chọn giảng viên hướng dẫn</p>
+                            <select name="gv" className="select" onChange={changeGvHandler}>
+                                <option value="">------</option>
+                                {listDataGvhd?.map((gv: any) => (
+                                    <option value={gv._id} key={gv._id}>{`${gv?.lastName} ${gv?.firstName}`}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Chọn chuyên ngành</p>
+                            <select name="spe" className="select" onChange={changeSpecializedHandler}>
+                                <option value="">------</option>
+                                {listDataSpecialized?.map((gv: any) => (
+                                    <option value={gv._id} key={gv._id}>
+                                        {gv.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col l-6">
+                            <p className="label-form__6">Chọn loại đề tài</p>
+                            <select name="typetopic" className="select" onChange={changeTypeTopicHandler}>
+                                <option value="">------</option>
+                                {listDataTypeTopic?.map((gv: any) => (
+                                    <option value={gv._id} key={gv._id}>
+                                        {gv.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col l-12">
+                            <p className="label-form">Chọn thành viên nhóm</p>
+                            <div style={{ display: 'flex', marginLeft: '3%' }}>
+                                <MultipleSelectPlaceholder listDataSv={listDataSv} setSvData={setSvData} />
+                                <button type="submit" className='btn-save__topic'>
+                                    Đăng kí đề tài
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

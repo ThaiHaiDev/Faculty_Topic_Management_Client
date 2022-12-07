@@ -51,7 +51,7 @@ const ApprovalAdmin = () => {
             <div className="header-topic">
                 <p>Danh sách các đề tài cần được phê duyệt</p>
             </div>
-            <p className="total-topic">Tổng số thành viên hiện có: {dataTopic?.length}</p>
+            <p className="total-topic__ad">Tổng số thành viên hiện có: {dataTopic?.length}</p>
             <table className="rtable">
                 <thead>
                     <tr>

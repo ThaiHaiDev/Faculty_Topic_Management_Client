@@ -19,7 +19,6 @@ const ApprovalPage = () => {
                     <Breadcrumb name="Danh sách đề tài cần phê duyệt" url="/pheduyet" />
                     <div className="approval-card">
                         {userSignin.current.role === 'dean' ? <ApprovalAdmin /> : <ApprovalGv />}
-                        
                     </div>
                 </div>
             </div>

@@ -11,9 +11,11 @@ const AddTopicPage = () => {
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <Breadcrumb name="Đăng ký đề tài" url="/dangkidetai" />
-                    <div className="create-topic-card">
-                        <AddTopic />
+                    <div style={{ marginRight: '100px' }}>
+                        <Breadcrumb name="Đăng ký đề tài" url="/dangkidetai" />
+                        <div className="create-topic-card">
+                            <AddTopic />
+                        </div>
                     </div>
                 </div>
             </div>

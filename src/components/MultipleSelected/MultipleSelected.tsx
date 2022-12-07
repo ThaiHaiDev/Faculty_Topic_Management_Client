@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
+import './MultipleSelected.scss';
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -32,7 +34,6 @@ export default function MultipleSelectPlaceholder(props: any) {
             target: { value },
         } = event;
         setPersonName(
-            // On autofill we get a stringified value.
             typeof value === 'string' ? value.split(',') : value,
         );
         props.setSvData(typeof value === 'string' ? value.split(',') : value,)
@@ -40,7 +41,7 @@ export default function MultipleSelectPlaceholder(props: any) {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+            <FormControl sx={{ m: 1, width: 400, mt: 3 }}>
                 <Select
                     multiple
                     displayEmpty
@@ -49,7 +50,7 @@ export default function MultipleSelectPlaceholder(props: any) {
                     input={<OutlinedInput />}
                     renderValue={(selected) => {
                         if (selected.length === 0) {
-                            return <em>Placeholder</em>;
+                            return <em>Vui lòng chọn thành viên</em>;
                         }
 
                         return selected.join(', ');
@@ -58,7 +59,7 @@ export default function MultipleSelectPlaceholder(props: any) {
                     inputProps={{ 'aria-label': 'Without label' }}
                 >
                     <MenuItem disabled value="">
-                        <em>Placeholder</em>
+                        <em>Vui lòng chọn thành viên</em>
                     </MenuItem>
                     {props.listDataSv?.map((data : any) => (
                         <MenuItem key={data._id} value={data._id} style={getStyles(data.value, personName, theme)}>

@@ -5,7 +5,7 @@ import { useSnackbar } from 'notistack';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
-import notificationApi from '../../services/notificationApi';
+import specializedApi from '../../services/specializedApi';
 
 const AddSpecialized = () => {
     const {
@@ -20,8 +20,8 @@ const AddSpecialized = () => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<any> = async (data: any) => {
-        notificationApi
-            .addNoti(data)
+        specializedApi
+            .addSpecialized(data)
             .then((dataNew: any) => {
                 enqueueSnackbar('Thêm chuyên ngành thành công', { variant: 'success' });
                 reset();

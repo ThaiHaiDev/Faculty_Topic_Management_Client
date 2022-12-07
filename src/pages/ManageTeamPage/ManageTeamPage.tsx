@@ -11,9 +11,11 @@ const ManageTeamPage = () => {
                     <Sidebar />
                 </div>
                 <div className="rol c-8 right">
-                    <Breadcrumb name="Quản lý nhóm" url="/quanlynhom" />
-                    <div className="manage-team-card">
-                        <ListTvTeam />
+                    <div style={{ marginRight: '100px' }}>
+                        <Breadcrumb name="Quản lý nhóm" url="/quanlynhom" />
+                        <div className="manage-team-card">
+                            <ListTvTeam />
+                        </div>
                     </div>
                 </div>
             </div>
