@@ -32,7 +32,7 @@ const SigninPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (userSignin.current?.role === undefined) {
+        if (userSignin.current?.role !== undefined) {
             navigate('/')
         }
     }, [navigate, userSignin])
