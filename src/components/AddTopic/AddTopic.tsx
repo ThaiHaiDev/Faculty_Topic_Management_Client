@@ -95,6 +95,7 @@ const AddTopic = () => {
                             <input
                                 className="create-topic-input"
                                 type="text"
+                                maxLength={255}
                                 placeholder="Vd: Đề tài 1"
                                 {...register('name', {
                                     required: 'Tên đề tài được yêu cầu',
@@ -109,6 +110,7 @@ const AddTopic = () => {
                             <textarea
                                 className="create-topic-textarea"
                                 placeholder="Vd: abc ..."
+                                maxLength={500}
                                 {...register('desc', {
                                     required: 'Mô tả đề tài được yêu cầu',
                                 })}

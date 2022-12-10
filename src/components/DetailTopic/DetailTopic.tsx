@@ -108,6 +108,8 @@ const DetailTopic = () => {
                             dataDetail?.team[0]?.firstName,
                         )} - ${formatName(dataDetail?.team[1]?.lastName)} ${formatName(
                             dataDetail?.team[1]?.firstName,
+                        )} - ${formatName(dataDetail?.team[2]?.lastName)} ${formatName(
+                            dataDetail?.team[2]?.firstName,
                         )}`}</td>
                     </tr>
                     <tr style={{ background: '#e6ee9c' }}>

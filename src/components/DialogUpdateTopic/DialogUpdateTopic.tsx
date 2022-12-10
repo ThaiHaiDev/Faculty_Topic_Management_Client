@@ -57,18 +57,23 @@ export default function DialogUpdateTopic(props: any) {
             'team',
             `${formatName(props.data?.team[0]?.lastName)} ${formatName(props.data?.team[0]?.firstName)} - ${formatName(
                 props.data?.team[1]?.lastName,
-            )} ${formatName(props.data?.team[1]?.firstName)}`,
+            )} ${formatName(props.data?.team[1]?.firstName)} ${formatName(props.data?.team[2]?.lastName)} ${formatName(
+                props.data?.team[2]?.firstName,
+            )}`,
         );
     }, [setValue, props.data]);
 
     React.useEffect(() => {
         typeTopicApi.getAllTypeTopics().then((data) => {
-            const datafilter = data.filter((d:any) => { return d._id !== props.data?.typeTopic._id})
+            const datafilter = data.filter((d: any) => {
+                return d._id !== props.data?.typeTopic._id;
+            });
             setListDataTypeTopic(datafilter);
-            setOpen(false);
         });
         specializedApi.getAllSpecialized().then((data) => {
-            const datafilter = data.filter((d:any) => { return d._id !== props.data?.idSpecialized._id})
+            const datafilter = data.filter((d: any) => {
+                return d._id !== props.data?.idSpecialized._id;
+            });
             setListDataSpecialized(datafilter);
         });
     }, [props.data]);
@@ -84,7 +89,7 @@ export default function DialogUpdateTopic(props: any) {
     const onSubmit: SubmitHandler<any> = async (data: any) => {
         var arrayTeam = [];
         for (var i = 0; i < props.data?.team.length; i++) {
-            arrayTeam.push(props.data?.team[i]._id)
+            arrayTeam.push(props.data?.team[i]._id);
         }
         const newTopic = {
             ...data,
@@ -98,6 +103,7 @@ export default function DialogUpdateTopic(props: any) {
             .updateTopic(newTopic, props.data?._id)
             .then(() => {
                 enqueueSnackbar('Cập nhật đề tài thành công', { variant: 'success' });
+                setOpen(false);
             })
             .catch((error: AxiosError<any>) => {
                 enqueueSnackbar(error.response?.data, { variant: 'error' });
@@ -124,6 +130,7 @@ export default function DialogUpdateTopic(props: any) {
                                 <input
                                     className="create-topic-input"
                                     type="text"
+                                    maxLength={255}
                                     placeholder="Vd: Đề tài 1"
                                     {...register('name', {
                                         required: 'Tên đề tài được yêu cầu',
@@ -138,6 +145,7 @@ export default function DialogUpdateTopic(props: any) {
                                 <textarea
                                     className="create-topic-textarea"
                                     placeholder="Vd: abc ..."
+                                    maxLength={500}
                                     {...register('desc', {
                                         required: 'Mô tả đề tài được yêu cầu',
                                     })}
@@ -236,7 +244,9 @@ export default function DialogUpdateTopic(props: any) {
                             <div className="col l-6">
                                 <p className="label-form__6">Chọn chuyên ngành</p>
                                 <select name="spe" className="select" onChange={changeSpecializedHandler}>
-                                    <option value={props.data?.idSpecialized._id}>{props.data?.idSpecialized.name}</option>
+                                    <option value={props.data?.idSpecialized._id}>
+                                        {props.data?.idSpecialized.name}
+                                    </option>
                                     {listDataSpecialized?.map((gv: any) => (
                                         <option value={gv._id} key={gv._id}>
                                             {gv.name}
