@@ -52,12 +52,12 @@ export default function DialogUpdateTopic(props: any) {
         setValue('sesmeter', props.data?.sesmeter);
         setValue('slsv', props.data?.slsv);
         setValue('leader', `${formatName(props.data?.leader?.lastName)} ${formatName(props.data?.leader?.firstName)}`);
-        setValue('gvhd', `${formatName(props.data?.gvhd.lastName)} ${formatName(props.data?.gvhd.firstName)}`);
+        setValue('gvhd', `${formatName(props.data?.gvhd?.lastName)} ${formatName(props.data?.gvhd?.firstName)}`);
         setValue(
             'team',
             `${formatName(props.data?.team[0]?.lastName)} ${formatName(props.data?.team[0]?.firstName)} - ${formatName(
                 props.data?.team[1]?.lastName,
-            )} ${formatName(props.data?.team[1]?.firstName)} ${formatName(props.data?.team[2]?.lastName)} ${formatName(
+            )} ${formatName(props.data?.team[1]?.firstName)} - ${formatName(props.data?.team[2]?.lastName)} ${formatName(
                 props.data?.team[2]?.firstName,
             )}`,
         );
