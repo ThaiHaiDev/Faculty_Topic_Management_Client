@@ -8,9 +8,12 @@ import { useSnackbar } from 'notistack';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import authApi from '../../services/authApi';
 import { AxiosError } from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import userSlice from './userSlice';
 import { SigninRequest } from '../../share/models/auth';
+import { useEffect } from 'react';
+import { RootState } from '../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 const SigninPage = () => {
     const {
@@ -20,9 +23,19 @@ const SigninPage = () => {
         formState: { errors },
     } = useForm<SigninRequest>();
 
+    const userSignin = useSelector((state: RootState) => state.user);
+
+    const navigate = useNavigate();
+
     const { enqueueSnackbar } = useSnackbar();
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (userSignin.current?.role === undefined) {
+            navigate('/')
+        }
+    }, [navigate, userSignin])
 
     const onSubmit: SubmitHandler<SigninRequest> = async (data: SigninRequest) => {
         authApi

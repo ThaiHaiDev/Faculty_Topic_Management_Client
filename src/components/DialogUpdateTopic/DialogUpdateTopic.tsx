@@ -65,6 +65,7 @@ export default function DialogUpdateTopic(props: any) {
         typeTopicApi.getAllTypeTopics().then((data) => {
             const datafilter = data.filter((d:any) => { return d._id !== props.data?.typeTopic._id})
             setListDataTypeTopic(datafilter);
+            setOpen(false);
         });
         specializedApi.getAllSpecialized().then((data) => {
             const datafilter = data.filter((d:any) => { return d._id !== props.data?.idSpecialized._id})
@@ -214,6 +215,7 @@ export default function DialogUpdateTopic(props: any) {
                                     type="number"
                                     max={3}
                                     min={1}
+                                    disabled
                                     placeholder="Vd: 1"
                                     {...register('slsv', {
                                         required: 'Số lượng thành viên nhóm được yêu cầu',
