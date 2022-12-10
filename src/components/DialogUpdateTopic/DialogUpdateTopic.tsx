@@ -51,7 +51,7 @@ export default function DialogUpdateTopic(props: any) {
         setValue('technology', props.data?.technology);
         setValue('sesmeter', props.data?.sesmeter);
         setValue('slsv', props.data?.slsv);
-        setValue('leader', `${formatName(props.data?.leader.lastName)} ${formatName(props.data?.leader.firstName)}`);
+        setValue('leader', `${formatName(props.data?.leader?.lastName)} ${formatName(props.data?.leader?.firstName)}`);
         setValue('gvhd', `${formatName(props.data?.gvhd.lastName)} ${formatName(props.data?.gvhd.firstName)}`);
         setValue(
             'team',

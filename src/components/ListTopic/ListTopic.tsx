@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import topicApi from '../../services/topicApi';
 import { useNavigate } from 'react-router-dom';
+import formatName from '../../utils/formatName';
 
 const ListTopic = () => {
     const [dataTopics, setDataTopics] = useState<any>([])
@@ -46,7 +47,7 @@ const ListTopic = () => {
                         <tr className="item-table" key={index}>
                         <td style={{ textAlign: 'center', padding: '0' }}>{index++}</td>
                         <td style={{width: '490px'}}> {topics.name && topics.name.slice(0, 80) + (topics.name.length > 80 ? '...' : '')} </td>
-                        <td>{`${topics?.gvhd?.lastName} ${topics?.gvhd?.firstName}`}</td>
+                        <td>{`${formatName(topics?.gvhd?.lastName)} ${formatName(topics?.gvhd?.firstName)}`}</td>
                         <td>{topics?.status === 'duyet2' ? 'Đã duyệt' : 'Chưa duyệt'}</td>
                         <td style={{ padding: '0', display: 'flex', justifyItems: 'center', justifyContent: 'center' }}>
                             <img
