@@ -111,7 +111,7 @@ const ApprovalGv = () => {
             <div className="header-topic">
                 <p>Danh sách các đề tài sinh viên đang đăng ký</p>
             </div>
-            <p className="total-topic">Tổng số đề tài: {dataTopic?.length}</p>
+            <p className="total-topic">Tổng số đề tài: {dataTopicOfGvhd?.length}</p>
             <table className="rtable">
                 <thead>
                     <tr>

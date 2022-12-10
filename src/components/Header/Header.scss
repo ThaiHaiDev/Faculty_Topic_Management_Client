@@ -11,7 +11,19 @@
         background-image: url(../../assets/header.jpg);
         background-repeat: no-repeat;
     }
+
+    .link-signin {
+        position: absolute;
+        z-index: 99;
+        right: 100px;
+        text-decoration: none;
+        padding: 5px;
+    }
     
+    .link-signin:hover {
+        background: #0288d1;
+    }
+
     background-color: #42a5f5;
     border: 5px solid #1976d2;
 }
