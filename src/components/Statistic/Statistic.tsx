@@ -36,7 +36,7 @@ const Statistic = () => {
                         <h3>{`Tổng số sinh viên: ${dataStatistic?.numberOfStudents}`}</h3>
                     </div>
                     <div style={{ padding: '15px' }}>
-                        <PieChart dataStatistic={dataStatistic} />
+                        <PieChartTopic dataStatistic={dataStatistic} />
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@ const Statistic = () => {
                         <h3>{`Tổng số đề tài: ${dataStatistic?.numberOfTopic}`}</h3>
                     </div>
                     <div style={{ padding: '15px' }}>
-                        <PieChartTopic dataStatistic={dataStatistic} />
+                        <PieChart dataStatistic={dataStatistic} />
                     </div>
                 </div>
             </div>
