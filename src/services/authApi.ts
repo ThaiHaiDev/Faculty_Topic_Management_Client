@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import process from 'process';
-import { SigninRequest } from "../share/models/auth";
+import { SigninRequest, SignupRequest } from "../share/models/auth";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const authApi = {
-    signUp(data: any): Promise<AxiosResponse> {
+    signUp(data: SignupRequest): Promise<AxiosResponse> {
         const url = `${API_BASE_URL}/api/v1/auth/register`;
         return axios.post(url, data);
     },

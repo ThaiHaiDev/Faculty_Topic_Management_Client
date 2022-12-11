@@ -10,7 +10,7 @@ import authApi from '../../services/authApi';
 import { AxiosError } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import userSlice from './userSlice';
-import { SigninRequest } from '../../share/models/auth';
+import { SigninErrorResponse, SigninRequest } from '../../share/models/auth';
 import { useEffect } from 'react';
 import { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -46,7 +46,7 @@ const SigninPage = () => {
                 reset();
                 document.location = '/';
             })
-            .catch((error: AxiosError<any>) => {
+            .catch((error: AxiosError<SigninErrorResponse>) => {
                 enqueueSnackbar(error.response?.data.message, { variant: 'error' });
             });
     };

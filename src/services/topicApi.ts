@@ -1,4 +1,5 @@
 import axiosClient from "../share/axios-client/axiosClient";
+import { AddTopicRequest, AddTopicResponse } from "../share/models/topic";
 
 const topicApi = {
     getAllTopics(): Promise<any> {
@@ -13,7 +14,7 @@ const topicApi = {
         const url = `/api/v1/user/topic/${idUser}`;
         return axiosClient.get(url);
     },
-    addTopic(dataTopic : any): Promise<any> {
+    addTopic(dataTopic : AddTopicRequest): Promise<AddTopicResponse> {
         const url = '/api/v1/topic';
         return axiosClient.post(url, dataTopic);
     },
