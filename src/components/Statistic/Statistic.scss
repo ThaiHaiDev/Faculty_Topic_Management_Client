@@ -1,0 +1,30 @@
+.statistic {
+    margin-top: 5px;
+    width: 99%;
+    height: 570px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+
+    .header-topic {
+        padding-left: 20px;
+        font-size: 18px;
+        background: #81d4fa;
+
+        p {
+            margin: 0;
+            padding: 15px 0;
+        }
+    }
+
+    .col {
+        padding: 0;
+    }
+
+    .card {
+        margin: 5px 10px;
+        border: 1px solid black;
+        text-align: center;
+    }
+   
+}

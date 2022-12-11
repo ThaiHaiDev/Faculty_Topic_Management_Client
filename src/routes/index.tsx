@@ -12,6 +12,7 @@ import ManageTeamPage from '../pages/ManageTeamPage/ManageTeamPage';
 import StatusTopicPage from '../pages/StatusTopicPage/StatusTopicPage';
 import ApprovalPage from '../pages/ApprovalPage/ApprovalPage';
 import InfoTeamPage from '../pages/InfoTeamPage/InfoTeamPage';
+import StatisticPage from '../pages/StatisticPage/StatisticPage';
 
 const Auth = () => {
     return (
@@ -22,6 +23,7 @@ const Auth = () => {
             <Route path="/thongtinsinhvien" element={<ListSvPage />} />
             <Route path="/themdulieu" element={<AddDataPage />} />
             <Route path="/pheduyet" element={<ApprovalPage />} />
+            <Route path="/thongke" element={<StatisticPage />} />
             <Route path="/chitiet/:id" element={<DetailTopicPage />} />
 
             <Route path="/thongtinnhom" element={<InfoTeamPage />} />
